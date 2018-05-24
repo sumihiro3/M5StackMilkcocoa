@@ -15,6 +15,7 @@ const char MQTT_CLIENTID[] PROGMEM  = __TIME__ MILKCOCOA_APP_ID;
 WiFiClient client;
 Milkcocoa milkcocoa = Milkcocoa(&client, MQTT_SERVER, MILKCOCOA_SERVERPORT, MILKCOCOA_APP_ID, MQTT_CLIENTID);
 
+// Init M5Stack screen
 void clearScreen(){
     uint8_t font_buf[20][16];
     uint16_t sj_length;
@@ -24,6 +25,7 @@ void clearScreen(){
 
 void setup() {
   Serial.begin(115200);
+  // Connect to Wi-Fi
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
   Serial.print("connecting");
   while (WiFi.status() != WL_CONNECTED) {
@@ -35,7 +37,7 @@ void setup() {
   Serial.println(WiFi.localIP());
   delay(500);
 
-  // subscribe
+  // Subscribe Milkcocoa datastore
   milkcocoa.on(MILKCOCOA_DATASTORE, "push", on_push);
 
   M5.begin();
@@ -48,6 +50,7 @@ void loop() {
   delay(5000);
 }
 
+// Callback for subscribe
 void on_push(DataElement *elem) {
   // 登録されたデータを画面に表示する（データ項目名[type, message]は適宜変更してください）
   M5.Lcd.print(elem->getString("type"));
