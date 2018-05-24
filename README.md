@@ -1,6 +1,7 @@
 # M5StackMilkcocoa
 
-Subscribe Milkcocoa data (MQTT) from M5Stack.(Arduino)
+Subscribe Milkcocoa data (MQTT) by M5Stack.
+(Arduino)
 
 ## Environment
 
@@ -10,4 +11,4 @@ Subscribe Milkcocoa data (MQTT) from M5Stack.(Arduino)
 
 ## Description
 
-see [this topic]() at Qiita.
+see [this topic](https://qiita.com/sumihiro3/items/387c6786102c51370ce0) at Qiita.
